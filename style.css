@@ -1,5 +1,5 @@
 .frontline{
-    background: url(./images/mountains.png) no-repeat center center/cover;
+    background: url("images/mountains.png") no-repeat center center/cover;
     min-height: 200px;
 }
 .addbtn{
