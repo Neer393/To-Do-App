@@ -1,5 +1,5 @@
 .frontline{
-    background: url(/Webdev/To_do_App/images/mountains.png) no-repeat center center/cover;
+    background: url(./images/mountains.png) no-repeat center center/cover;
     min-height: 200px;
 }
 .addbtn{
@@ -8,12 +8,7 @@
 #Title,#newTitle{
     border-radius: 5px;
     width: 100%;
-    /* text-transform: capitalize; */
 }
-/* textarea{
-    resize: none;
-    height: fit-content;
-} */
 .twoinp{
     background-color: transparent;
     border: none;
