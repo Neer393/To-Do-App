@@ -1,0 +1,58 @@
+.frontline{
+    background: url(/Webdev/To_do_App/images/mountains.png) no-repeat center center/cover;
+    min-height: 200px;
+}
+.addbtn{
+    margin-right: 2rem;
+}
+#Title,#newTitle{
+    border-radius: 5px;
+    width: 100%;
+    /* text-transform: capitalize; */
+}
+/* textarea{
+    resize: none;
+    height: fit-content;
+} */
+.twoinp{
+    background-color: transparent;
+    border: none;
+    padding-left: 5px;
+    width: 95%;
+}
+.topic2{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    font-size: larger;
+}
+.topic{
+    width: 80%;
+}
+#description,#newdescription{
+    width: 100%;
+    border-radius: 5px;
+    height: 150px;
+}
+.delbtn,.editbtn{
+    float: right;
+    margin-right: 1rem;
+}
+textarea:focus{
+    outline: none;
+}
+.newcard{
+    border-radius: 15px;
+    margin: 0px 10px 10px 10px;
+    border: 2px solid black;
+    padding :0.8rem 0 0.8rem 0.8rem;
+    background-color: yellow;
+}
+#notesholder{
+    flex-wrap: wrap;
+    width: 100%;
+}
+.neeche{
+    position: relative;
+    bottom: 0px;
+}
