@@ -1,3 +1,17 @@
+const titletxtarea = document.querySelector("#Title");
+titletxtarea.addEventListener("keydown",e=>{
+    titletxtarea.style.height='40px';
+    let scrheight = e.target.scrollHeight;
+    titletxtarea.style.height=`${scrheight}px`;
+});
+
+const contenttxtarea = document.querySelector("#description");
+contenttxtarea.addEventListener("keydown",e=>{
+    contenttxtarea.style.height='150px';
+    let ht = e.target.scrollHeight;
+    contenttxtarea.style.height=`${ht}px`;
+});
+
 window.addEventListener('load',()=>{
     let createbtn = document.querySelector("#create");
     let holder=document.querySelector("#notesholder");
@@ -10,16 +24,11 @@ window.addEventListener('load',()=>{
         let cardcontent=localStorage[a];
         let newdiv=document.createElement("div");
         newdiv.classList.add("container-fluid");
-        newdiv.classList.add("d-flex");
-        newdiv.style.flexWrap="wrap";
 
         let cardinp = document.createElement("textarea");
         cardinp.type="text";
+        cardinp.style.width="100%";
         cardinp.classList.add("twoinp");
-        cardinp.style.resize="none";
-        cardinp.style.display="block";
-        cardinp.style.overflow="hidden";
-        cardinp.value=cardcontent;
         cardinp.setAttribute("readonly","readonly");
         newdiv.appendChild(cardinp);
         
@@ -29,12 +38,9 @@ window.addEventListener('load',()=>{
         let card = document.createElement("div");
         
         card.classList.add("container-fluid");
-        card.classList.add("d-flex");
-        card.style.flexWrap="wrap";
-        card.style.height=`auto`;
         card.style.width=`100%`;
         card.classList.add('newcard');
-        
+  
         let editbtn = document.createElement("button");
         editbtn.classList.add("btn");
         editbtn.classList.add("btn-block");
@@ -48,37 +54,42 @@ window.addEventListener('load',()=>{
         delbtn.style.float="right";
         delbtn.classList.add("btn-danger");
         delbtn.classList.add("delbtn");
-        delbtn.innerHTML=`<i class="fa fa-thin fa-trash">`
+        delbtn.innerHTML=`<i class="fa fa-thin fa-trash">`;
+
+        let btndiv = document.createElement("div");
+        btndiv.classList.add("container-fluid");
+        btndiv.style.paddingRight="0px";
+        btndiv.appendChild(delbtn);
+        btndiv.appendChild(editbtn);
 
         let anotherdiv = document.createElement("div");
         anotherdiv.classList.add("container-fluid");
         anotherdiv.style.marginLeft="0px";
         anotherdiv.style.marginRight="0px";
-        anotherdiv.style.flexWrap="wrap";
-        anotherdiv.classList.add("d-flex");
         anotherdiv.style.width="100%";
         anotherdiv.classList.add("topic");
 
         let titleinp = document.createElement("textarea");
         titleinp.classList.add("topic2");
         titleinp.type="text";
-        titleinp.value=cardtitle;
-        titleinp.style.display="block";
-        titleinp.style.overflow="hidden";
-        titleinp.style.resize="none";
         titleinp.style.fontSize="2rem";
         titleinp.style.height="2.8rem";
         titleinp.setAttribute("readonly","readonly");
         anotherdiv.appendChild(titleinp);
 
-
         card.appendChild(anotherdiv);
         card.appendChild(newdiv);
-        card.appendChild(editbtn);
-        card.appendChild(delbtn);
+        card.appendChild(btndiv);
         
         holder.appendChild(card);
         localStorage.setItem(`${cardtitle}`,`${cardcontent}`);
+        titleinp.value=cardtitle;
+        titleinp.style.height = '40px';
+        titleinp.style.height = titleinp.scrollHeight+'px';
+        
+        cardinp.value=cardcontent;
+        cardinp.style.height = '20px';
+        cardinp.style.height = cardinp.scrollHeight+'px';
         
         delbtn.addEventListener("click",function(){
             holder.removeChild(card);
@@ -94,12 +105,19 @@ window.addEventListener('load',()=>{
                 editbtn.classList.add("btn-success");
                 editbtn.innerHTML=`Save`;
 
+                titleinp.addEventListener("keydown",e=>{
+                    titleinp.style.height='40px';
+                    let height1 = e.target.scrollHeight;
+                    console.log(height1);
+                    titleinp.style.height=`${height1}px`;
+                });
 
-                cardinp.addEventListener('input',autoResize,false);
-                titleinp.addEventListener('input',autoResize,false);
-                function autoResize() {
-                    this.style.height = this.scrollHeight + 'px';
-                }
+                cardinp.addEventListener("keydown",e=>{
+                    cardinp.style.height='10px';
+                    let height2= e.target.scrollHeight;
+                    console.log(height2);
+                    cardinp.style.height=`${height2}px`;
+                });
             }
             else{
                 localStorage.setItem(`${titleinp.value}`,`${cardinp.value}`);
@@ -117,6 +135,8 @@ window.addEventListener('load',()=>{
     }
 
     createbtn.addEventListener("click",function(){
+        document.querySelector("#Title").style.height="40px";
+        document.querySelector("#description").style.height="150px";
         let cardtitle=document.querySelector("#Title").value;
         if(cardtitle==""){
             window.alert("Title cannot be empty");
@@ -127,16 +147,11 @@ window.addEventListener('load',()=>{
 
         let newdiv=document.createElement("div");
         newdiv.classList.add("container-fluid");
-        newdiv.classList.add("d-flex");
-        newdiv.style.flexWrap="wrap";
 
         let cardinp = document.createElement("textarea");
         cardinp.type="text";
+        cardinp.style.width="100%";
         cardinp.classList.add("twoinp");
-        cardinp.style.resize="none";
-        cardinp.style.display="block";
-        cardinp.style.overflow="hidden";
-        cardinp.value=cardcontent;
         cardinp.setAttribute("readonly","readonly");
         newdiv.appendChild(cardinp);
         
@@ -146,9 +161,6 @@ window.addEventListener('load',()=>{
         let card = document.createElement("div");
         
         card.classList.add("container-fluid");
-        card.classList.add("d-flex");
-        card.style.flexWrap="wrap";
-        card.style.height=`auto`;
         card.style.width=`100%`;
         card.classList.add('newcard');
         
@@ -165,24 +177,24 @@ window.addEventListener('load',()=>{
         delbtn.style.float="right";
         delbtn.classList.add("btn-danger");
         delbtn.classList.add("delbtn");
-        delbtn.innerHTML=`<i class="fa fa-thin fa-trash">`
+        delbtn.innerHTML=`<i class="fa fa-thin fa-trash">`;
+
+        let btndiv = document.createElement("div");
+        btndiv.classList.add("container-fluid");
+        btndiv.style.paddingRight="0px";
+        btndiv.appendChild(delbtn);
+        btndiv.appendChild(editbtn);
 
         let anotherdiv = document.createElement("div");
         anotherdiv.classList.add("container-fluid");
         anotherdiv.style.marginLeft="0px";
         anotherdiv.style.marginRight="0px";
-        anotherdiv.style.flexWrap="wrap";
-        anotherdiv.classList.add("d-flex");
         anotherdiv.style.width="100%";
         anotherdiv.classList.add("topic");
 
         let titleinp = document.createElement("textarea");
         titleinp.classList.add("topic2");
         titleinp.type="text";
-        titleinp.value=cardtitle;
-        titleinp.style.display="block";
-        titleinp.style.overflow="hidden";
-        titleinp.style.resize="none";
         titleinp.style.fontSize="2rem";
         titleinp.style.height="2.8rem";
         titleinp.setAttribute("readonly","readonly");
@@ -191,19 +203,26 @@ window.addEventListener('load',()=>{
 
         card.appendChild(anotherdiv);
         card.appendChild(newdiv);
-        card.appendChild(editbtn);
-        card.appendChild(delbtn);
+        card.appendChild(btndiv);
         
         holder.appendChild(card);
         localStorage.setItem(`${cardtitle}`,`${cardcontent}`);
+        titleinp.value=cardtitle;
+        titleinp.style.height = '40px';
+        titleinp.style.height = titleinp.scrollHeight+'px';
+        
+        cardinp.value=cardcontent;
+        cardinp.style.height = '20px';
+        cardinp.style.height = cardinp.scrollHeight+'px';
         
         delbtn.addEventListener("click",function(){
             holder.removeChild(card);
-            localStorage.removeItem(`${cardtitle}`);
+            localStorage.removeItem(`${titleinp.value}`);
         });
 
         editbtn.addEventListener("click",function(){
             if(editbtn.innerHTML==`Edit <i class="fa fa-thin fa-pencil"></i>`){
+                console.log("editing mein ghusa");
                 localStorage.removeItem(`${titleinp.value}`);
                 titleinp.removeAttribute("readonly");
                 cardinp.removeAttribute("readonly");
@@ -211,12 +230,19 @@ window.addEventListener('load',()=>{
                 editbtn.classList.add("btn-success");
                 editbtn.innerHTML=`Save`;
 
+                titleinp.addEventListener("keydown",e=>{
+                    titleinp.style.height='40px';
+                    let height1 = e.target.scrollHeight;
+                    console.log(height1);
+                    titleinp.style.height=`${height1}px`;
+                });
 
-                cardinp.addEventListener('input',autoResize,false);
-                titleinp.addEventListener('input',autoResize,false);
-                function autoResize() {
-                    this.style.height = this.scrollHeight + 'px';
-                }
+                cardinp.addEventListener("keydown",e=>{
+                    cardinp.style.height='10px';
+                    let height2= e.target.scrollHeight;
+                    console.log(height2);
+                    cardinp.style.height=`${height2}px`;
+                });
             }
             else{
                 localStorage.setItem(`${titleinp.value}`,`${cardinp.value}`);
@@ -231,5 +257,21 @@ window.addEventListener('load',()=>{
                 editbtn.innerHTML=`Edit <i class="fa fa-thin fa-pencil"></i>`;
             }
         });
+    });
+    document.querySelector("#close").addEventListener("click",function(){
+        let titlerholder=document.querySelector("#Title");
+        let desholder=document.querySelector("#description");
+        titlerholder.value="";
+        desholder.value="";
+        titlerholder.style.height="40px";
+        desholder.style.height="150px";
+    });
+    document.querySelector("#close2").addEventListener("click",function(){
+        let titlerholder=document.querySelector("#Title");
+        let desholder=document.querySelector("#description");
+        titlerholder.value="";
+        desholder.value="";
+        titlerholder.style.height="40px";
+        desholder.style.height="150px";
     });
 });
