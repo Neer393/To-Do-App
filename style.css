@@ -5,9 +5,15 @@
 .addbtn{
     margin-right: 2rem;
 }
-#Title,#newTitle{
+#Title{
     border-radius: 5px;
     width: 100%;
+    height: 40px;
+    resize: none;
+    max-height: 170px;
+}
+#Title::-webkit-scrollbar{
+    width: 0px;
 }
 .twoinp{
     background-color: transparent;
@@ -24,12 +30,20 @@
 .topic{
     width: 80%;
 }
-#description,#newdescription{
+#description{
     width: 100%;
     border-radius: 5px;
+    /* min-height: 150px; */
+    resize: none;
     height: 150px;
 }
+#description::-webkit-scrollbar{
+    width: 0px;
+}
 .delbtn,.editbtn{
+    float:right;
+}
+.editbtn{
     float: right;
     margin-right: 1rem;
 }
@@ -41,7 +55,7 @@ textarea:focus{
     margin: 0px 10px 10px 10px;
     border: 2px solid black;
     padding :0.8rem 0 0.8rem 0.8rem;
-    background-color: yellow;
+    background-image: linear-gradient(to bottom right, #ff8b7e,lightblue);
 }
 #notesholder{
     flex-wrap: wrap;
@@ -50,4 +64,7 @@ textarea:focus{
 .neeche{
     position: relative;
     bottom: 0px;
+}
+.adderbg{
+    background-image: linear-gradient(to bottom right, #ff8b7e,lightblue);   
 }
