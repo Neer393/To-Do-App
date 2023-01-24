@@ -25,20 +25,20 @@
     <!-- Modal for adding task -->
     <div class="modal fade" id="inputmodal">
         <div class="modal-dialog">
-            <div class="modal-content bg-warning">
+            <div class="modal-content adderbg">
                 <div class="modal-header">
                     <h3>Create a new note <i class="fa fa-thin fa-pencil"></i></h3>
-                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                    <button class="btn-close" data-bs-dismiss="modal" id="close2"></button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <input type="text" name="" id="Title" placeholder="Title..." class="p-2 mb-2">
+                        <textarea type="text" name="" id="Title" placeholder="Title..." class="p-2 mb-2"></textarea>
                         <textarea name="" id="description" placeholder="Description" class="p-2"></textarea>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success" id="create" data-bs-dismiss="modal">Create</button>
-                    <button class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-danger" data-bs-dismiss="modal" id="close">Close</button>
                 </div> 
             </div>
         </div>
